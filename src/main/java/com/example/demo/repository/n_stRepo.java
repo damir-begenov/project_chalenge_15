@@ -11,7 +11,8 @@ public interface n_stRepo extends Neo4jRepository<n_st,String> {
     @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) RETURN m,u,r")
     List<n_st> getAllUser();
 
-    @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) WHERE m.FIO=~ ('(?i)'+$FIO+'.*') RETURN m,u,r")
+    @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) WHERE m.FIO=~ ('(?i).*'+'(?i)'+$FIO+'.*') or " +
+            "m.IINID=~ ('(?i)'+$FIO+'.*') RETURN m,u,r")
     List<n_st> findByFIO(String FIO);
 
     @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) WHERE r.end_date<>'' RETURN m,u,r")
