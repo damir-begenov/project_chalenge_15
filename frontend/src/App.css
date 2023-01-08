@@ -88,3 +88,13 @@ table {
   /* transform: translate(-1%); */
 }
 /* Table of any kind */
+
+/*Register Student Forms*/
+.registerForm {
+  margin-top: 70px;
+  position: relative;
+  left: 52%;
+  transform: translate(-50%);
+  width: 80%;
+  font-family: 'Montserrat';
+}

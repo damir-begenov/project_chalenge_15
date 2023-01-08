@@ -5,6 +5,8 @@ import com.example.demo.entity.rel_final;
 import com.example.demo.repository.n_stRepo;
 import com.example.demo.repository.rel_final_repo;
 import lombok.AllArgsConstructor;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @AllArgsConstructor
 public class NewController {
     private final n_stRepo n_stRepo;

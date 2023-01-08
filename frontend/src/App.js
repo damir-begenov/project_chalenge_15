@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import AllStudents from './Components/Students';
 import CompanyDetails from './Components/CompanyDetails';
+import RegisterStPage from './Components/RegisterStudent';
 
 
 
@@ -14,6 +15,9 @@ function App() {
       break;
     case "/company":
       Component = <CompanyDetails/>
+      break;
+    case "/registerStudent":
+      Component = <RegisterStPage/>
       break;
     default:
       break;
