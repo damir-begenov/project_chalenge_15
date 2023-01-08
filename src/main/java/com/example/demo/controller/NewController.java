@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.n_st;
+import com.example.demo.entity.node_c;
 import com.example.demo.entity.rel_final;
 import com.example.demo.repository.n_stRepo;
+import com.example.demo.repository.node_cRepository;
 import com.example.demo.repository.rel_final_repo;
 import lombok.AllArgsConstructor;
 
@@ -19,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class NewController {
     private final n_stRepo n_stRepo;
+    private final com.example.demo.repository.node_cRepository node_cRepository;
     private final com.example.demo.repository.rel_final_repo rel_final_repo;
 
 //    @GetMapping("/{fio}")
@@ -49,6 +52,10 @@ public class NewController {
     @GetMapping("/alls/school/{company}")
     public List<n_st> getbySchool(@PathVariable String company){
         return n_stRepo.findBySchool(company);
+    }
+    @GetMapping("/alls/schoolj")
+    public List<node_c> getAllSchools(){
+        return node_cRepository.getAllSchoolss();
     }
 
 }
