@@ -30,4 +30,8 @@ public class NewController {
     public List<n_st> getfromiddf(){
         return n_stRepo.getAllUser();
     }
+    @GetMapping("/alls/{FIO}")
+    public List<n_st> getBYFIO(@PathVariable String FIO){
+        return n_stRepo.findByFIO(FIO);
+    }
 }
