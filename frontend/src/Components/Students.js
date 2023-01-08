@@ -32,7 +32,7 @@ class AllStudents extends Component {
             {this.state.persons.map((person, index) => 
                 <tr className="row">
                 <th scope="row">{index+1}</th>
-                <td>{person.iinid}</td>
+                <td className="IIN">{person.iinid}</td>
                 <td className="FIO">{person.fio}</td>
                 <td>{person.label}</td>
             </tr>

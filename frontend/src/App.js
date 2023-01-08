@@ -4,6 +4,8 @@ import Navbar from './Components/Navbar';
 import AllStudents from './Components/Students';
 import CompanyDetails from './Components/CompanyDetails';
 import RegisterStPage from './Components/RegisterStudent';
+import SearchBar from './Components/SearchBar';
+import Companies from './Components/Companies';
 
 
 
@@ -13,12 +15,14 @@ function App() {
     case "/":
       Component = <AllStudents/>
       break;
-    case "/company":
-      Component = <CompanyDetails/>
+    case "/schools":
+      Component = <Companies/>
       break;
     case "/registerStudent":
       Component = <RegisterStPage/>
       break;
+    case "/students":
+      Component = <SearchBar/>
     default:
       break;
   }

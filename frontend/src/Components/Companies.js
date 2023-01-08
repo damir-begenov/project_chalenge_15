@@ -2,7 +2,7 @@ import { Component } from "react";
 import {Company} from "../CompanySch"
 import axios from 'axios';
 
-class CompanyDetails extends Component {
+class Companies extends Component {
     state = {
         schools: []
     }
@@ -10,15 +10,15 @@ class CompanyDetails extends Component {
     componentDidMount() {
         axios.get(`http://127.0.0.1:8081/alls/school`)
           .then(res => {
-            const persons = res.data;
-            this.setState({ persons });
+            const schools = res.data;
+            this.setState({ schools });
           })
       }
     render() {
         return(
             <div className="CompDetails">
                 <div className="Naming">
-                    <h1 className="CompName">{Company[0].COMPANY}</h1>
+                    <h1 className="CompName">{schools.BIN}</h1>
                     <h2 className="CompBin">BIN:{Company[0].BIN}</h2>
                 </div>
             </div>
@@ -26,4 +26,4 @@ class CompanyDetails extends Component {
     }
 }
 
-export default CompanyDetails
+export default Companies

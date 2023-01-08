@@ -36,6 +36,15 @@ html {
   font-family: 'Montserrat';
   font-weight: 400;
 }
+.nav-links {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav-links:hover {
+  color: #606060;
+  transition: 0.3s ease;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -74,14 +83,13 @@ html {
 
 /* Table of any kind */
 table {
-  margin-top: 70px;
+  margin-top: 130px;
   position: relative;
   left: 52%;
   transform: translate(-50%);
   width: 80%;
   font-family: 'Montserrat';
 }
-
 .FIO {
   display:flex;
   margin-left: 35%;
@@ -97,4 +105,56 @@ table {
   transform: translate(-50%);
   width: 80%;
   font-family: 'Montserrat';
+}
+
+/* Search bar */ 
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border-right: none;
+  border: none;
+  padding: 5px;
+  height: 20px;
+  outline: none;
+  color: #ffffff;
+  background-color: #17191C;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.searchButton {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  width: 80px;
+  height: 33px;
+  /* border: 1px solid #00B4CC; */
+  background: #17191C;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+  color: #ffffff;
+  border: none;
+}
+.searchButton:hover {
+  color: #606060;
+  transition: 0.3s ease;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  margin-top: 50px;
+  width: 30%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.resultOfSearch {
+  margin-top: 130px;
 }

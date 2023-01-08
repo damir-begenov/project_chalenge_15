@@ -10,7 +10,7 @@ class Navbar extends Component {
                 <ul className="nav-menu">
                     {MenuData.map((item, index)=> {
                         return (
-                            <li key={index}><a>{item.title}</a></li>
+                            <li key={index}><a className={item.cName} href={item.url}>{item.title}</a></li>
                         )
                     })}
                 </ul>

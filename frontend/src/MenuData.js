@@ -1,12 +1,12 @@
 export const MenuData = [
     {
         title: "Students",
-        url: "#",
+        url: "http://localhost:3000/students",
         cName: "nav-links",
     },
     {
-        title: "Companies",
-        url: "#",
+        title: "Schools",
+        url: "http://localhost:3000/schools",
         cName: "nav-links",
     }
 ]
