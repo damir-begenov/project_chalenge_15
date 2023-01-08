@@ -12,5 +12,8 @@ public interface node_cRepository extends Neo4jRepository<node_c,String> {
     @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) WHERE m.FIO=~ ('(?i).*'+$str+'.*') RETURN u{.BINID, .LABEL , .company}")
     List<node_c> getAllUserNodeByFIO(String str);
 
+    @Query("match (n:node_c) return n")
+    List<node_c> getAllSchoolss();
+
 
 }
