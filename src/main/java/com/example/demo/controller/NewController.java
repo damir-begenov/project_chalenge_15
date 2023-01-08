@@ -26,8 +26,8 @@ public class NewController {
 //    public List getBookByTitleContaining(@PathVariable String str) {
 //        return rel_final_repo.findByFIO(str);
 //    }
-//    @GetMapping("/alls")
-//    public List<rel_final> getfromiddf(){
-//        return rel_final_repo.findAll();
-//    }
+    @GetMapping("/alls")
+    public List<n_st> getfromiddf(){
+        return n_stRepo.getAllUser();
+    }
 }

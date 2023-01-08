@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import com.example.demo.entity.node_c;
-import com.example.demo.repository.SongRepository;
 import com.example.demo.repository.n_stRepo;
 import com.example.demo.repository.node_cRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -11,12 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication   {
 
-	private final SongRepository songRepository;
 	private final node_cRepository nod_cRepository;
 	private final n_stRepo n_stRepo;
 
-	public DemoApplication(SongRepository songRepository, node_cRepository nod_cRepository, com.example.demo.repository.n_stRepo n_stRepo) {
-		this.songRepository = songRepository;
+	public DemoApplication( node_cRepository nod_cRepository, com.example.demo.repository.n_stRepo n_stRepo) {
 		this.nod_cRepository = nod_cRepository;
 		this.n_stRepo = n_stRepo;
 	}
