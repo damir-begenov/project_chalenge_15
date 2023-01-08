@@ -37,4 +37,13 @@ public class NewController {
     public List<n_st> getBYFIO(@PathVariable String FIO){
         return n_stRepo.findByFIO(FIO);
     }
+    @GetMapping("/alls/finished")
+    public List<n_st> getFinished(){
+        return n_stRepo.findFinishedTheSchool();
+    }
+    @GetMapping("/alls/unfinished")
+    public List<n_st> getUnfinshed(){
+        return n_stRepo.findDidntFininshed();
+    }
+
 }
