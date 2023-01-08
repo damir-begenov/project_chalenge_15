@@ -53,7 +53,7 @@ public class NewController {
     public List<n_st> getbySchool(@PathVariable String company){
         return n_stRepo.findBySchool(company);
     }
-    @GetMapping("/alls/schoolj")
+    @GetMapping("/alls/school")
     public List<node_c> getAllSchools(){
         return node_cRepository.getAllSchoolss();
     }
