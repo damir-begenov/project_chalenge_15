@@ -37,6 +37,7 @@ public class NewController {
     public List<n_st> getBYFIO(@PathVariable String FIO){
         return n_stRepo.findByFIO(FIO);
     }
+
     @GetMapping("/alls/finished")
     public List<n_st> getFinished(){
         return n_stRepo.findFinishedTheSchool();
@@ -44,6 +45,10 @@ public class NewController {
     @GetMapping("/alls/unfinished")
     public List<n_st> getUnfinshed(){
         return n_stRepo.findDidntFininshed();
+    }
+    @GetMapping("/alls/school/{company}")
+    public List<n_st> getbySchool(@PathVariable String company){
+        return n_stRepo.findBySchool(company);
     }
 
 }
