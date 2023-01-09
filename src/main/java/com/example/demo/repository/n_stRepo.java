@@ -24,8 +24,8 @@ public interface n_stRepo extends Neo4jRepository<n_st,String> {
     List<n_st> findDidntFininshed();
 
 
-    @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) WHERE u.company=~ ($company)  RETURN m,u,r")
-    List<n_st> findBySchool(String company);
+    @Query("MATCH (u:node_c)<-[r:rel_final]-(m:n_st) WHERE u.BINID=~ ($BINID)  RETURN m,u,r")
+    List<n_st> findBySchool(String BINID);
 
     n_st getByIINID(String iin);
 }

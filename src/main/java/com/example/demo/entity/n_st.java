@@ -17,7 +17,7 @@ public class n_st {
     private String FIO;
     private String LABEL;
     @Relationship(type="rel_final", direction = Relationship.Direction.OUTGOING)
-    private List<rel_final> node_cs;
+    private List<rel_final> rel_finals;
 
     public String getIINID() {
         return IINID;
@@ -31,7 +31,7 @@ public class n_st {
         return LABEL;
     }
 
-    public List<rel_final> getNode_cs() {
-        return node_cs;
+    public List<rel_final> getRel_finals() {
+        return rel_finals;
     }
 }
