@@ -18,6 +18,8 @@ public class rel_final {
     private String start_date;
     @Property("START_ID")
     private String START_ID;
+    @Property("GPA")
+    private String GPA;
     @Property("type")
     private String type;
 
@@ -65,7 +67,13 @@ public class rel_final {
         this.node_c = node_c;
     }
 
+    public String getGPA() {
+        return GPA;
+    }
 
+    public void setGPA(String GPA) {
+        this.GPA = GPA;
+    }
 
     public String getEnd_date() {
         return end_date;
