@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.SchoolPageEntity;
 import com.example.demo.entity.n_st;
 import com.example.demo.entity.node_c;
 import com.example.demo.entity.rel_final;
 import com.example.demo.repository.n_stRepo;
-import com.example.demo.repository.node_cRepository;
-import com.example.demo.repository.rel_final_repo;
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -49,13 +48,32 @@ public class NewController {
     public List<n_st> getUnfinshed(){
         return n_stRepo.findDidntFininshed();
     }
-    @GetMapping("/alls/school/{company}")
-    public List<n_st> getbySchool(@PathVariable String company){
-        return n_stRepo.findBySchool(company);
+    @GetMapping("/alls/school/{BINID}")
+    public SchoolPageEntity getbySchool(@PathVariable String BINID){
+        int finished = 0;
+        int unfinished = 0;
+        List<n_st> n_sts = new ArrayList<>();
+        SchoolPageEntity schoolPageEntity = new SchoolPageEntity();
+        List<n_st> nn =  n_stRepo.findBySchool(BINID);
+        for(n_st n: nn) {
+            List<rel_final> node = n.getRel_finals();
+            rel_final lol = node.get(0);
+            n_sts.add(n);
+            if (lol.getEnd_date()!="") {
+                finished++;
+            } else {
+                unfinished++;
+            }
+        }
+        schoolPageEntity.setN_sts(n_sts);
+        schoolPageEntity.setFinished(finished);
+        schoolPageEntity.setUnfinished(unfinished);
+        return schoolPageEntity;
     }
     @GetMapping("/alls/school")
     public List<node_c> getAllSchools(){
         return node_cRepository.getAllSchoolss();
     }
+
 
 }
