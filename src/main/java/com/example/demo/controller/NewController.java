@@ -12,11 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 public class NewController {
     private final n_stRepo n_stRepo;
@@ -49,15 +56,21 @@ public class NewController {
         return n_stRepo.findDidntFininshed();
     }
     @GetMapping("/alls/school/{BINID}")
-    public SchoolPageEntity getbySchool(@PathVariable String BINID){
+    public SchoolPageEntity getbySchool(@PathVariable String BINID) throws ParseException {
         int finished = 0;
         int unfinished = 0;
         List<n_st> n_sts = new ArrayList<>();
         SchoolPageEntity schoolPageEntity = new SchoolPageEntity();
         List<n_st> nn =  n_stRepo.findBySchool(BINID);
+        List<Date> dates = new ArrayList<>();
         for(n_st n: nn) {
             List<rel_final> node = n.getRel_finals();
             rel_final lol = node.get(0);
+            String inputDate =  lol.getStart_date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+            Date afterConvDate = formatter.parse(inputDate);
+            dates.add(afterConvDate);
+            System.out.println(afterConvDate);
             n_sts.add(n);
             if (lol.getEnd_date()!="") {
                 finished++;
@@ -65,6 +78,7 @@ public class NewController {
                 unfinished++;
             }
         }
+
         schoolPageEntity.setN_sts(n_sts);
         schoolPageEntity.setFinished(finished);
         schoolPageEntity.setUnfinished(unfinished);
