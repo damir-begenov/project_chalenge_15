@@ -16,12 +16,27 @@ class Companies extends Component {
       }
     render() {
         return(
-            <div className="CompDetails">
-                <div className="Naming">
-                    <h1 className="CompName">{schools.BIN}</h1>
-                    <h2 className="CompBin">BIN:{Company[0].BIN}</h2>
-                </div>
-            </div>
+            <table class="table">
+            <thead >
+                <tr>
+                <th scope="col"><a class="sort">#</a></th>
+                <th scope="col"><a class="sort">BIN</a></th>
+                <th scope="col"><a class="sort">Company</a></th>
+                <th scope="col"><a class="sort">LABEL</a></th>
+                <th scope="col"></th>
+                 </tr>
+            </thead>
+            <tbody>
+            {this.state.schools.map((person, index) => 
+                <tr className="row">
+                <th scope="row">{index+1}</th>
+                <td>{person.binid}</td>
+                <td className="FIO">{person.company}</td>
+                <td>{person.label}</td>
+            </tr>
+            )}
+            </tbody>
+        </table>
         )
     }
 }

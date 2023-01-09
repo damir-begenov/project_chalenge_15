@@ -10,8 +10,8 @@ class CompanyDetails extends Component {
     componentDidMount() {
         axios.get(`http://127.0.0.1:8081/alls/school`)
           .then(res => {
-            const persons = res.data;
-            this.setState({ persons });
+            const schools = res.data;
+            this.setState({ schools });
           })
       }
     render() {

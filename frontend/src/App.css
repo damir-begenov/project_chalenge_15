@@ -158,3 +158,12 @@ table {
 .resultOfSearch {
   margin-top: 130px;
 }
+
+
+/* CHECK */
+.unfinished {
+  color: #e6a0a0;
+}
+.finished {
+  color: #afe6c5;
+}

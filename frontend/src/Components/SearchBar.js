@@ -42,6 +42,13 @@ export default class SearchBar extends Component {
 //           movies = <AllStudents setState={this.state.persons} />;
 //     }
 // return movies}
+    status(e) {
+        if (e.end_date == '' ) {
+            return <td className="unfinished">Ungraduated</td>
+        } else {
+            return <td className="finished">Graduated</td>
+        }
+    }
     get kuni() {
         if (this.state.persons.length==0) {
             return <h1 className="resultOfSearch">No one is here</h1>
@@ -54,6 +61,7 @@ export default class SearchBar extends Component {
                 <th scope="col"><a class="sort">IIN</a></th>
                 <th scope="col"><a class="sort">FIO</a></th>
                 <th scope="col"><a class="sort">LABEL</a></th>
+                <th scope="col"><a class="sort">Status</a></th>
                 <th scope="col"></th>
                  </tr>
             </thead>
@@ -64,6 +72,7 @@ export default class SearchBar extends Component {
                 <td>{person.iinid}</td>
                 <td className="FIO">{person.fio}</td>
                 <td>{person.label}</td>
+                {this.status(person.node_cs[0])}
             </tr>
             )}
             </tbody>
