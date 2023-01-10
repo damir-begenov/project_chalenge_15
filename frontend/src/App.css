@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
+:root {
+  --text-color: #ffffff;
+  --main-color: #17191C;
+  --secondary-color: #606060;
+}
+
 .App {
   text-align: center;
 }
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 html {
-  background-color: #17191C;
+  background-color: var(--main-color);
   color: white;
 }
 .logo {
@@ -41,7 +52,7 @@ html {
   color: #ffffff;
 }
 .nav-links:hover {
-  color: #606060;
+  color: var(--secondary-color);
   transition: 0.3s ease;
 }
 
@@ -83,16 +94,53 @@ html {
 
 /* Table of any kind */
 table {
-  margin-top: 130px;
   position: relative;
   left: 52%;
   transform: translate(-50%);
-  width: 80%;
-  font-family: 'Montserrat';
+  width: 65%;
+
+  border-collapse: separate;
+  border-spacing: 0 20px;
+
+  text-align: start;
+  /* margin-top: -40px; */
+}
+.table {
+  margin-top: 130px;
+}
+
+table th {
+  font-size: 1.5em;
+  text-align: start;
+
+}
+
+table td {
+
+}
+
+.table tbody {
+}
+
+.table thead {
+
+}
+
+table .tdrow {
+  /* margin: 20px 0 0 0; */
+}
+
+.rowInfo {
+  text-decoration: none;
+  color: #ffffff;
+}
+.rowInfo:hover {
+  color: #606060;
+  transition: 0.3s ease;
 }
 .FIO {
-  display:flex;
-  margin-left: 35%;
+  /* display:flex; */
+  /* margin-left: 35%; */
   /* transform: translate(-1%); */
 }
 /* Table of any kind */
@@ -162,8 +210,93 @@ table {
 
 /* CHECK */
 .unfinished {
-  color: #e6a0a0;
+  color: #6b6b6b;
 }
 .finished {
   color: #afe6c5;
+}
+
+.school {
+  display: flex;
+  top: 100px;
+  position: relative;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.title h1 {
+  font-size: 4em;
+  letter-spacing: 4px;
+}
+
+.title h1 span {
+  color: var(--secondary-color);
+}
+
+.CompBin {
+  font-size: 1.5em;
+  color: var(--secondary-color);
+  margin-top: -40px;
+}
+
+.statCard {
+  margin: 60px 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.statCard h2 {
+}
+
+.statCard h1 {
+  font-size: 2.5em;
+  letter-spacing: 4px;
+}
+
+.statList {
+  text-align: start;
+  font-size: 1.5em;
+  font-weight: 500;
+  list-style: none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.statList li {
+  color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  gap: 7px;
+}
+
+.statList li span {
+  color: var(--text-color);
+  text-align: center;
+  font-size: 5em;
+  font-weight: 700;
+}
+
+.studTitle {
+  font-size: 2.5em;
+  letter-spacing: 4px;
+}
+
+.studList {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  gap: 50px;
+
+  margin-top: 150px;
+}
+
+.marginTop {
+  margin-top: 130px;
+  position: absolute;
 }
