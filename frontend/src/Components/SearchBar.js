@@ -1,11 +1,12 @@
 import React,{ Component } from "react";
 import axios from 'axios';
 import AllStudents from "./Students";
+import { Link } from 'react-router-dom'
 
 
 export default class SearchBar extends Component {
     componentDidMount() {
-        axios.get(`http://127.0.0.1:8081/alls`)
+        axios.get(`http://127.0.0.1:8012/alls`)
           .then(res => {
             const persons = res.data;
             this.setState({ persons });
@@ -18,7 +19,7 @@ export default class SearchBar extends Component {
         value: ''
     }
     search = async val => {
-        let link = 'http://127.0.0.1:8081/alls/' + val
+        let link = 'http://127.0.0.1:8012/alls/' + val
         axios 
             .get(link)
             .then(res => {
@@ -42,6 +43,13 @@ export default class SearchBar extends Component {
 //           movies = <AllStudents setState={this.state.persons} />;
 //     }
 // return movies}
+status(e) {
+    if (e.end_date == '' ) {
+        return <td className="finished">Studying</td>
+    } else {
+        return <td className="unfinished">Graduated</td>
+    }
+}
     get kuni() {
         if (this.state.persons.length==0) {
             return <h1 className="resultOfSearch">No one is here</h1>
@@ -54,6 +62,8 @@ export default class SearchBar extends Component {
                 <th scope="col"><a class="sort">IIN</a></th>
                 <th scope="col"><a class="sort">FIO</a></th>
                 <th scope="col"><a class="sort">LABEL</a></th>
+                <th scope="col"><a class="sort">Status</a></th>
+                <th scope="col"><a class="sort">School</a></th>
                 <th scope="col"></th>
                  </tr>
             </thead>
@@ -61,9 +71,11 @@ export default class SearchBar extends Component {
             {this.state.persons.map((person, index) => 
                 <tr className="row">
                 <th scope="row">{index+1}</th>
-                <td>{person.iinid}</td>
-                <td className="FIO">{person.fio}</td>
+                <td className="IIN"><Link className="rowInfo" to={`/students/${person.iinid}`}>{person.iinid}</Link></td>
+                <td className="FIO"><Link className="rowInfo" to={`/students/${person.iinid}`}>{person.fio}</Link></td>
                 <td>{person.label}</td>
+                {this.status(person.rel_finals[0])}
+                <td><Link className="rowInfo" to={`/schools/${person.rel_finals[0].node_c.binid}`}>{person.rel_finals[0].node_c.company}</Link></td>
             </tr>
             )}
             </tbody>
