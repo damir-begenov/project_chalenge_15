@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -21,6 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -59,6 +61,8 @@ public class NewController {
     public SchoolPageEntity getbySchool(@PathVariable String BINID) throws ParseException {
         int finished = 0;
         int unfinished = 0;
+        double avg_gpa = 0;
+        int length=0;
         List<n_st> n_sts = new ArrayList<>();
         SchoolPageEntity schoolPageEntity = new SchoolPageEntity();
         List<n_st> nn =  n_stRepo.findBySchool(BINID);
@@ -66,19 +70,31 @@ public class NewController {
         for(n_st n: nn) {
             List<rel_final> node = n.getRel_finals();
             rel_final lol = node.get(0);
-            String inputDate =  lol.getStart_date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-            Date afterConvDate = formatter.parse(inputDate);
-            dates.add(afterConvDate);
-            System.out.println(afterConvDate);
-            n_sts.add(n);
+            String studyTime = null;
+            NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
+            Number number = format.parse(lol.getGPA());
+            double d = number.doubleValue();
+            avg_gpa+=d;
             if (lol.getEnd_date()!="") {
                 finished++;
+                length++;
             } else {
                 unfinished++;
+                length++;
             }
+            if(lol.getEnd_date()!=""){
+                Date afterConvDate = formatter.parse(lol.getStart_date());
+                Date afterConvDates = formatter.parse(lol.getEnd_date());
+                long difference_In_Time = afterConvDates.getTime() - afterConvDate.getTime();
+                long difference_In_Years = (difference_In_Time / (1000l * 60 * 60 * 24 * 365));
+                long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
+                studyTime = difference_In_Years + " years, " + difference_In_Days + " days, ";
+            }
+            n.setStydyTime(studyTime);
+            n_sts.add(n);
         }
-
+        schoolPageEntity.setAvgGPA(avg_gpa/(length+1));
         schoolPageEntity.setN_sts(n_sts);
         schoolPageEntity.setFinished(finished);
         schoolPageEntity.setUnfinished(unfinished);
